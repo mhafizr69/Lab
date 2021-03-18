@@ -1,0 +1,18 @@
+t = 0:0.0001:3;
+KT = 0.01;
+Ke = 0.01;
+Ka = 25;
+Ra = 1;
+J = 0.01;
+b = 0.1;
+s = %s;
+tau = (J * Ra)/( b * Ra + KT * Ke);
+Km = KT / ( b * Ra + KT * Ke );
+tf = Ka * Km / ( tau * s + 1);
+y = csim('step',t,tf);
+plot(t,y,'LineWidth',3);
+xgrid(1);
+xlabel('Time,t (s)','font_size',3);
+ylabel('Speed (m/s)','font_size',3);
+legend('Speed');
+title('Step Response of DC Servomotor','font_size',5,'font_style',6);
